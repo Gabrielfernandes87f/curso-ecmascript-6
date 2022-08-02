@@ -1,136 +1,21 @@
-const todos = [
-    {
-        id: 1,
-        text: 'aprender Javascript',
-        completed: true
-    },
-    {
-        id: 2,
-        text: 'aprender ECMAScript',
-        completed: true
-    },
-    {
-        id: 3,
-        text: 'aprender Vue.js',
-        completed: false
+const myPrommise = () => new Promise((reolve, reject) => {
+    return setTimeout(() => {
+        reject('ok')
+    }, 2000)
+})
+
+// myPrommise().then((Response) => {
+//     console.log(Response)
+// })
+
+const exec = async () => {
+    try {
+        await myPrommise()
+        console.log('deu certo')
     }
-];
-const putTodos = [
-    {
-        ...todos,
-        completed: true
-    }
-]
-
-console.log(putTodos)
-
-// aabaixo navegamos entre os elementos do array e imprimimos o texto de cada um usando o map
-
-const getTodos = todos.map(({ text }) => text);
-console.log(getTodos);
-// abaixo fiz uma destruturação para pegar apenas o text, jogando para outra variável
-const { text } = todos[0];
-console.log(text);
-
-// const { id, ...rest } = todos
-// console.log(rest)
-
-const todosList = todos.filter(todo => todo.completed);
-
-
-// acima é o mesmo que: const todosList = todos.filter(function (todo) {
-//   return todo.completed;
-// }
-console.log(todosList);
-
-const index = todos.findIndex(todo => todo.text === 'aprender Vue.js');
-
-// acima estamos buscando o indice do objeto que tem o texto 'aprender Vue.js'
-
-console.log(index);
-
-const temVue = todos.some(todos => todos.text === 'aprender Vue.js');
-
-// acima estamos usando o some para verificar se existe algum todo com o texto aprender Vue.js
-
-console.log(temVue);
-
-const sum = (...params) => {
-    return params.reduce((total, next) => total + next)
-}
-
-
-console.log(sum(5, 10, 15, 10)) // resultado 40
-
-// const car = {
-//     marca: null,
-//     price: 0,
-//     ano: 2023,
-//     modelo: null
-// }
-
-// const civic = car
-// civic.marca = 'honda'
-// civic.price = 75.000
-// civic.ano = 2022
-// civic.modelo = 'sedan'
-
-// console.log(civic)
-
-
-// acima esse forma vai sempre reescrever car
-
-// obs sempre que for uma classe, uma metodo construtor usar o nome da function maiúscula
-
-function Car(marca, price, ano, modelo) {
-    this.marca = marca
-    this.price = price
-    this.ano = ano
-    this.modelo = modelo
-}
-
-// 
-const argo = new Car('Fiat', 75.000, 2023, 'sedam')
-const tesla = new Car('Tesla', 350.000, 2024, 'SUV')
-// new chama o metodo construtor
-console.log(argo, tesla)
-
-class Person {
-    constructor(nome = 'Gabriel', senha = 1234, email = 'Gabriel1coder@gmail.com') {
-        this.name = nome
-        this.senha = senha
-        this.email = email
+    catch (error) {
+        console.warn('deu ruim')
     }
 }
 
-// const putTodos = [
-//     {
-//         ...todos,
-//         completed: true
-//     }
-// ]
-
-const gabriel = new Person()
-
-const test = {
-    ...gabriel,
-    email: 'test@gmail.com'
-}
-
-
-console.log(test)
-
-class Person3 {
-    constructor(name, email) {
-        this.name = name
-        this.email = email
-    }
-    get fullPerson() {
-        return `${this.name} ${this.email}`
-    }
-}
-const person3 = new Person3('Gabriel', 'Gabriel1coder@gmail.com')
-
-const coder1 =  person3.fullPerson
-
-console.log(coder1)
+exec()
