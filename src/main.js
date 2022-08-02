@@ -94,3 +94,43 @@ const argo = new Car('Fiat', 75.000, 2023, 'sedam')
 const tesla = new Car('Tesla', 350.000, 2024, 'SUV')
 // new chama o metodo construtor
 console.log(argo, tesla)
+
+class Person {
+    constructor(nome = 'Gabriel', senha = 1234, email = 'Gabriel1coder@gmail.com') {
+        this.name = nome
+        this.senha = senha
+        this.email = email
+    }
+}
+
+// const putTodos = [
+//     {
+//         ...todos,
+//         completed: true
+//     }
+// ]
+
+const gabriel = new Person()
+
+const test = {
+    ...gabriel,
+    email: 'test@gmail.com'
+}
+
+
+console.log(test)
+
+class Person3 {
+    constructor(name, email) {
+        this.name = name
+        this.email = email
+    }
+    get fullPerson() {
+        return `${this.name} ${this.email}`
+    }
+}
+const person3 = new Person3('Gabriel', 'Gabriel1coder@gmail.com')
+
+const coder1 =  person3.fullPerson
+
+console.log(coder1)
